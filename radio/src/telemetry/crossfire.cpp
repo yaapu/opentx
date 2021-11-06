@@ -260,17 +260,16 @@ void processCrossfireTelemetryFrame(uint8_t module)
       }
       break;
 
-#if defined(LUA)
-    default:
-      if (luaInputTelemetryFifo && luaInputTelemetryFifo->hasSpace(rxBufferCount-2) ) {
-        for (uint8_t i=1; i<rxBufferCount-1; i++) {
-          // destination address and CRC are skipped
-          luaInputTelemetryFifo->push(rxBuffer[i]);
-        }
-      }
-      break;
-#endif
   }
+// push a copy of all frames to lua no matter what
+#if defined(LUA)
+  if (luaInputTelemetryFifo && luaInputTelemetryFifo->hasSpace(rxBufferCount-2) ) {
+    for (uint8_t i=1; i<rxBufferCount-1; i++) {
+      // destination address and CRC are skipped
+      luaInputTelemetryFifo->push(rxBuffer[i]);
+    }
+  }
+#endif
 }
 
 #if defined(RADIO_FAMILY_TBS)

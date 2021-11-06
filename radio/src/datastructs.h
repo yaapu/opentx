@@ -845,6 +845,7 @@ PACK(struct RadioData {
   NOBACKUP(int8_t   varioPitch);
   NOBACKUP(int8_t   varioRange);
   NOBACKUP(int8_t   varioRepeat);
+  NOBACKUP(uint8_t  crsfDebug:1);
   CustomFunctionData customFn[MAX_SPECIAL_FUNCTIONS];
 
   EXTRA_GENERAL_FIELDS
@@ -1007,7 +1008,7 @@ static inline void check_struct()
   CHKSIZE(RadioData, 735);
   CHKSIZE(ModelData, 5301);
 #elif defined(PCBHORUS)
-  CHKSIZE(RadioData, 881);
+  CHKSIZE(RadioData, 882);
   CHKSIZE(ModelData, 9736);
 #endif
 

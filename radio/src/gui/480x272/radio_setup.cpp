@@ -85,6 +85,7 @@ enum menuRadioSetupItems {
   ITEM_SETUP_USB_MODE,
   ITEM_SETUP_RX_CHANNEL_ORD,
   ITEM_SETUP_STICK_MODE,
+  ITEM_SETUP_CRSF_DEBUG,
   ITEM_SETUP_MAX
 };
 
@@ -533,6 +534,11 @@ bool menuRadioSetup(event_t event)
         }
         break;
       }
+      case ITEM_SETUP_CRSF_DEBUG:
+        lcdDrawText(MENUS_MARGIN_LEFT, y, "CRSF debug");
+        g_eeGeneral.crsfDebug = editCheckBox(g_eeGeneral.crsfDebug, RADIO_SETUP_2ND_COLUMN, y, attr, event ) ;
+        break;
+
     }
   }
 
